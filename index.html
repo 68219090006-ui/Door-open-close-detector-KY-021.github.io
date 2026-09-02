@@ -1,12 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงงาน: ตรวจจับประตูเปิดปิด</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background-color: #f8fbff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* โทนสีฟ้าและขาว */
+        :root {
+            --primary-blue: #007BFF;
+            --light-blue: #e6f2ff;
+            --dark-blue: #0056b3;
+            --white: #ffffff;
+            --text-gray: #555555;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Section 1: Hero (แนะนำโครงงาน) */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #00d2ff);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Section 2: Details (รายละเอียดผู้จัดทำและวิชา) */
+        .details {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.08);
+            padding: 40px 30px;
+            flex: 1 1 300px;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Section 3: Institution (ข้อมูลวิทยาลัย) */
+        .institution {
+            background-color: var(--light-blue);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .institution-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .institution h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .institution p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Techo Songkham</h1>
-<p>68219090006</p>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">SmartDoor Project</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>ระบบตรวจจับประตูเปิด-ปิด</h1>
+            <p>โครงงานพัฒนาระบบเซนเซอร์อัจฉริยะสำหรับการตรวจจับสถานะของประตู เพื่อประยุกต์ใช้ในงานอุตสาหกรรมและความปลอดภัย</p>
+        </section>
+
+        <section class="details">
+            <h2 class="section-title">ข้อมูลโครงงาน</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>ผู้จัดทำ</h3>
+                    <p><strong>นาย ณัฐรณ เมืองพูล</strong></p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">ระดับชั้น ปวช.2</p>
+                </div>
+                <div class="card">
+                    <h3>รายวิชา</h3>
+                    <p><strong>20105-2022</strong></p>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">พื้นฐานเซนเซอร์ในงานอุตสาหกรรม</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="institution">
+            <div class="institution-content">
+                <h2>แผนกวิชาเทคนิคคอมพิวเตอร์</h2>
+                <p>วิทยาลัยเทคนิคตรัง</p>
+                <p style="font-size: 1rem; margin-top: 20px;">มุ่งมั่นพัฒนาทักษะวิชาชีพ สร้างสรรค์นวัตกรรมสู่อนาคต</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 โครงงานตรวจจับประตูเปิดปิด - นาย ณัฐรณ เมืองพูล. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
+
+```
