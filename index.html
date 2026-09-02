@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โครงงาน: ตรวจจับประตูเปิดปิด</title>
+    <!-- นำเข้า Font Prompt จาก Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -28,6 +29,7 @@
             --dark-blue: #0056b3;
             --white: #ffffff;
             --text-gray: #555555;
+            --border-color: #d1e5fb;
         }
 
         /* Header */
@@ -55,12 +57,12 @@
             text-decoration: none;
         }
 
-        /* Section 1: Hero (แนะนำโครงงาน) */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue), #00d2ff);
             color: var(--white);
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .hero h1 {
@@ -69,18 +71,15 @@
             font-weight: 700;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Section 2: Details (รายละเอียดผู้จัดทำและวิชา) */
-        .details {
-            padding: 80px 20px;
+        /* Common Section Layout */
+        .section-container {
+            padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .section-alt {
+            background-color: var(--light-blue);
         }
 
         .section-title {
@@ -90,22 +89,20 @@
             margin-bottom: 40px;
         }
 
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
+        /* Grid & Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
-            justify-content: center;
         }
 
         .card {
             background-color: var(--white);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.08);
+            box-shadow: 0 8px 24px rgba(0, 123, 255, 0.08);
             padding: 40px 30px;
-            flex: 1 1 300px;
-            max-width: 400px;
-            text-align: center;
             transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
         }
 
         .card:hover {
@@ -115,36 +112,31 @@
         .card h3 {
             color: var(--primary-blue);
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
         }
 
-        .card p {
+        /* Lists */
+        ul.custom-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        ul.custom-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
             color: var(--text-gray);
-            font-size: 1.1rem;
         }
 
-        /* Section 3: Institution (ข้อมูลวิทยาลัย) */
-        .institution {
-            background-color: var(--light-blue);
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .institution-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .institution h2 {
-            font-size: 2rem;
-            color: var(--dark-blue);
-            margin-bottom: 20px;
-        }
-
-        .institution p {
+        ul.custom-list li::before {
+            content: '•';
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
             font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 10px;
         }
 
         /* Footer */
@@ -156,19 +148,26 @@
             font-size: 0.9rem;
         }
 
+        /* Citation Style for UI */
+        .cite {
+            font-size: 0.8rem;
+            color: #888;
+            background: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="navbar">
             <a href="#" class="logo">SmartDoor Project</a>
@@ -176,41 +175,112 @@
     </header>
 
     <main>
+        <!-- ส่วนที่ 1: Hero Section -->
         <section class="hero">
-            <h1>ระบบตรวจจับประตูเปิด-ปิด</h1>
-            <p>โครงงานพัฒนาระบบเซนเซอร์อัจฉริยะสำหรับการตรวจจับสถานะของประตู เพื่อประยุกต์ใช้ในงานอุตสาหกรรมและความปลอดภัย</p>
+            <h1>โครงงานระบบตรวจจับประตูเปิด-ปิด <span class="cite">[cite: 2]</span></h1>
+            <p>พัฒนาระบบเซนเซอร์อัจฉริยะสำหรับการตรวจจับสถานะของประตู เพื่อประยุกต์ใช้ในงานอุตสาหกรรม</p>
         </section>
 
-        <section class="details">
+        <!-- ส่วนที่ 2: ข้อมูลผู้จัดทำ (จากข้อมูลเดิม) -->
+        <section class="section-container">
             <h2 class="section-title">ข้อมูลโครงงาน</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>ผู้จัดทำ</h3>
-                    <p><strong>นาย ณัฐรณ เมืองพูล</strong></p>
-                    <p style="margin-top: 10px; font-size: 0.95rem;">ระดับชั้น ปวช.2</p>
+            <div class="grid-2">
+                <div class="card" style="text-align: center; border-top: 4px solid #00d2ff;">
+                    <h3 style="border:none;">ผู้จัดทำ</h3>
+                    <p><strong>นาย ณัฐรณ เมืองพูล</strong> <span class="cite">[cite: 1]</span></p>
+                    <p>ระดับชั้น ปวช.2 <span class="cite">[cite: 1]</span></p>
                 </div>
-                <div class="card">
-                    <h3>รายวิชา</h3>
-                    <p><strong>20105-2022</strong></p>
-                    <p style="margin-top: 10px; font-size: 0.95rem;">พื้นฐานเซนเซอร์ในงานอุตสาหกรรม</p>
+                <div class="card" style="text-align: center; border-top: 4px solid #00d2ff;">
+                    <h3 style="border:none;">รายวิชา</h3>
+                    <p><strong>20105-2022</strong> <span class="cite">[cite: 1]</span></p>
+                    <p>พื้นฐานเซนเซอร์ในงานอุตสาหกรรม <span class="cite">[cite: 1]</span></p>
                 </div>
             </div>
         </section>
 
-        <section class="institution">
-            <div class="institution-content">
-                <h2>แผนกวิชาเทคนิคคอมพิวเตอร์</h2>
-                <p>วิทยาลัยเทคนิคตรัง</p>
-                <p style="font-size: 1rem; margin-top: 20px;">มุ่งมั่นพัฒนาทักษะวิชาชีพ สร้างสรรค์นวัตกรรมสู่อนาคต</p>
+        <!-- ส่วนที่ 3: ภาพรวมและอุปกรณ์ (ข้อมูลใหม่) -->
+        <section class="section-alt">
+            <div class="section-container">
+                <h2 class="section-title">รายละเอียดเชิงเทคนิค</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>1. ภาพรวมและวัตถุประสงค์</h3>
+                        <ul class="custom-list">
+                            <li>พัฒนาระบบตรวจจับการเปิด-ปิดฝา ประตู หรือกล่อง <span class="cite">[cite: 2]</span></li>
+                            <li>ประยุกต์ใช้เซนเซอร์ KY-021 ร่วมกับบอร์ดไมโครคอนโทรลเลอร์ (เช่น Arduino UNO R3) <span class="cite">[cite: 2]</span></li>
+                            <li>ตรวจสอบว่าวัตถุอยู่ในสถานะ "เปิด" (OPEN) หรือ "ปิด" (CLOSED) พร้อมแสดงผลสถานะและสถิติพื้นฐานผ่านหน้าจอ LCD 16x2 <span class="cite">[cite: 2]</span></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>2. อุปกรณ์ที่ใช้งาน</h3>
+                        <ul class="custom-list">
+                            <li>บอร์ดไมโครคอนโทรลเลอร์: Arduino UNO R3 (ใช้ชิป ATmega328P) <span class="cite">[cite: 2]</span></li>
+                            <li>เซนเซอร์ตรวจจับ: โมดูล KY-021 Mini Reed Switch Module <span class="cite">[cite: 2]</span></li>
+                            <li>จอแสดงผล: จอ LCD 16x2 พร้อมโมดูล I2C <span class="cite">[cite: 2]</span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- ส่วนที่ 4: การต่อวงจรและ UX (ข้อมูลใหม่) -->
+        <section class="section-container">
+            <div class="grid-2">
+                <div class="card">
+                    <h3>3. การต่อวงจร (Wiring)</h3>
+                    <ul class="custom-list">
+                        <li>โมดูล KY-021: ขา Signal ต่อเข้ากับขา D7, VCC ต่อเข้ากับ 5V, และ GND ต่อเข้ากับ GND <span class="cite">[cite: 2]</span></li>
+                        <li>จอ LCD 16x2 (ผ่าน I2C): ใช้ขา A4 สำหรับเชื่อมต่อ SDA, A5 สำหรับเชื่อมต่อ SCL และ Address คือ 0x27 <span class="cite">[cite: 2]</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>4. รูปแบบการแสดงผล (UX บน LCD)</h3>
+                    <ul class="custom-list">
+                        <li>บรรทัดที่ 0: แสดงสถานะปัจจุบัน เช่น OPEN หรือ CLOSED <span class="cite">[cite: 2]</span></li>
+                        <li>บรรทัดที่ 1: แสดงจำนวนครั้ง (Count: XXXX) ที่สถานะมีการเปลี่ยนแปลง หรือเวลาล่าสุด <span class="cite">[cite: 2]</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ส่วนที่ 5: ความท้าทายและการทดสอบ (ข้อมูลใหม่) -->
+        <section class="section-alt">
+            <div class="section-container">
+                <h2 class="section-title">การพัฒนาและการทดสอบ</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>5. ความท้าทายและข้อควรระวัง</h3>
+                        <ul class="custom-list">
+                            <li>ต้องตรวจสอบสถานะ HIGH/LOW ผ่าน Serial Monitor ก่อนเขียนเงื่อนไข OPEN/CLOSED <span class="cite">[cite: 2]</span></li>
+                            <li>แก้ปัญหาสัญญาณแกว่ง (Bounce) โดยเขียนโปรแกรม Debounce ยืนยันสถานะคงที่อย่างน้อย 30–50ms <span class="cite">[cite: 2]</span></li>
+                            <li>ควรอัปเดตหน้าจอ LCD เฉพาะตอนสถานะเปลี่ยน และเติมช่องว่าง (Padding) ให้เต็ม 16 ตัวอักษรเพื่อลดจอกระพริบ <span class="cite">[cite: 2]</span></li>
+                            <li>หลีกเลี่ยงการต่อขา D0 และ D1 หากไม่จำเป็น <span class="cite">[cite: 2]</span></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>6. การทดสอบและเกณฑ์การยอมรับ</h3>
+                        <ul class="custom-list">
+                            <li>ทดสอบโดยนำแม่เหล็กเข้า-ออก และตรวจสอบว่าหน้าจอ LCD แสดงข้อความเปลี่ยนแปลงได้รวดเร็วและถูกต้อง <span class="cite">[cite: 2]</span></li>
+                            <li>ค่า Count ต้องไม่เด้งนับซ้ำจากปัญหา Bounce (ตัวเลขเพิ่มตามจำนวนที่ตั้งใจเปิด-ปิดเท่านั้น) <span class="cite">[cite: 2]</span></li>
+                            <li>หน้าจอ LCD อ่านง่าย ไม่เกิดอาการกระพริบ และการต่อสายวงจรถูกต้อง 100% <span class="cite">[cite: 2]</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ส่วนที่ 6: ข้อมูลสถาบัน (จากข้อมูลเดิม) -->
+        <section class="section-container" style="text-align: center;">
+            <h2 style="font-size: 1.8rem; color: var(--dark-blue);">แผนกวิชาเทคนิคคอมพิวเตอร์ <span class="cite">[cite: 1]</span></h2>
+            <p style="font-size: 1.2rem; color: var(--text-gray); margin-top: 10px;">วิทยาลัยเทคนิคตรัง <span class="cite">[cite: 1]</span></p>
+        </section>
+
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 โครงงานตรวจจับประตูเปิดปิด - นาย ณัฐรณ เมืองพูล. All rights reserved.</p>
+        <p>&copy; 2026 โครงงานระบบตรวจจับประตูเปิด-ปิด - นาย ณัฐรณ เมืองพูล. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
-
-```
